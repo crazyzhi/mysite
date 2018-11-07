@@ -2,7 +2,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate,login   #django内置的用户认证和管理应用的方法
-from .forms import LoginForm,RegistrationForm
+from .forms import LoginForm,RegistrationForm,UserProfileForm
+
+
+
 
 def user_login(request):
     if request.method == "POST":        #request.method返回HTTP请求的字符串
@@ -32,7 +35,8 @@ def register(request):
             return HttpResponse("sorry, your can not register.")
     else:
         user_form = RegistrationForm()
-        return render(request,'account/register.html',{"form":user_form})
+        userprofileform = UserProfileForm()
+        return render(request,'account/register.html',{"form":user_form,"profile":userprofileform})
 
 
 

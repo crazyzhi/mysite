@@ -1,3 +1,4 @@
+#coding:utf-8
 """
 Django settings for mysite project.
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'account',
+    'password_reset',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,13 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = '/blog/'
+
+
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '836758124@qq.com' # 登陆第三方的邮箱账号
+EMAIL_HOST_PASSWORD = 'iwjrlevovufhbbfb'
+EMAIL_USE_TLS = True  # 必须配置为true
+EMAIL_FROM = '836758124@qq.com'  # 主动发送的邮箱
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

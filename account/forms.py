@@ -3,6 +3,13 @@
 
 from django import forms
 from django.contrib.auth.models import User    #引用Uer模型
+from .models import UserProfile,UserInfo
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ("phone","birth")
+
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
@@ -20,5 +27,12 @@ class RegistrationForm(forms.ModelForm):      #继承前面的forms.ModelForm类
         if cd['password'] != cd['password2']:
             raise forms.ValidationError("passwords do not match.")
         return cd['password2']
+class UserInfoForm(forms.ModelForm):
+    class Meta:
+        model = UserInfo
+        fields = ("school","company","profession","address","aboutme")
 
-
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ("email",)
